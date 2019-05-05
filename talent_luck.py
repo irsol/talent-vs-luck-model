@@ -49,35 +49,35 @@ def move_events(events):
     return events
 
 
-num_individuals = 5  # number of individuals
-width = 10
-height = 10
-start_capital = 10
+if __name__ == "__main__":
 
+    num_individuals = 5  # number of individuals
+    width = 10
+    height = 10
+    start_capital = 10
 
-# create list of individuals
-individuals = create_individuals(num_individuals, start_capital, width, height)
-lucky_events, unlucky_events = create_events(5, 5, width, height)
+    # create list of individuals
+    individuals = create_individuals(num_individuals, start_capital, width, height)
+    lucky_events, unlucky_events = create_events(5, 5, width, height)
 
-pprint(individuals)
-simulation_steps = 80
+    pprint(individuals)
+    simulation_steps = 80
 
-# expected value
-# how to calculate
-for t in range(simulation_steps):
-    # print(f"Step: {step}")
-    lucky_events = move_events(lucky_events)
-    unlucky_events = move_events(unlucky_events)
+    # expected value
+    # how to calculate
+    for t in range(simulation_steps):
+        # print(f"Step: {step}")
+        lucky_events = move_events(lucky_events)
+        unlucky_events = move_events(unlucky_events)
 
-    for individual in individuals:
-        if individual["position"] in lucky_events:
-            individual["capital"] = individual["capital"] * 2
+        for individual in individuals:
+            if individual["position"] in lucky_events:
+                individual["capital"] = individual["capital"] * 2
 
-        if individual["position"] in unlucky_events:
-            individual["capital"] = individual["capital"] / 2
+            if individual["position"] in unlucky_events:
+                individual["capital"] = individual["capital"] / 2
 
-
-pprint(individuals)
+    pprint(individuals)
 
 
 
