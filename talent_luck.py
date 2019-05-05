@@ -24,41 +24,26 @@ def create_events(num_events, width, height):
     return events
 
 
-def check_grid_boundaries(grid, x, y):
-    # Set the starting point
-    grid[x][y] = 0
+def move_events(events, width, height):
 
-    for y in range(len(grid)):
-        for x in range(len(grid[0])):
-            if grid[x][y] == num:
-                # x+1 in the grid
-                if x+1 < len(grid[0]) and grid[x+1][y] == -1:
-                    grid[x+1][y] = num + 1  # right
-
-                if x-1 >= 0 and grid[x-1][y] == -1:
-                    grid[x-1][y] = num + 1  # left
-
-                if y+1 < len(grid) and grid[x][y+1] == -1:
-                    grid[x][y+1] = num + 1  # down
-
-                if y-1 >= 0 and grid[x][y-1] == -1:
-                    grid[x][y-1] = num + 1
-
-
-def move_events(events):
     for event in events:
+        x, y = event
         direction = random.choice(["up", "down", "left", "right"])
         if direction == "up":
-            event[1] += 1
+            if y+1 < height:
+                event[1] += 1
 
         elif direction == "down":
-            event[1] -= 1
+            if y-1 >= 0:
+                event[1] -= 1
 
         elif direction == "left":
-            event[0] -= 1
+            if x-1 >= 0:
+                event[0] -= 1
 
         elif direction == "right":
-            event[0] += 1
+            if x+1 < width:
+                event[0] += 1
 
     return events
 
@@ -84,8 +69,8 @@ if __name__ == "__main__":
 
     for t in range(simulation_steps):
         # print(f"Step: {step}")
-        lucky_events = move_events(lucky_events)
-        unlucky_events = move_events(unlucky_events)
+        lucky_events = move_events(lucky_events, width, height)
+        unlucky_events = move_events(unlucky_events, width, height)
 
         for individual in individuals:
             if individual["position"] in lucky_events:
