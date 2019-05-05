@@ -55,13 +55,15 @@ if __name__ == "__main__":
     width = 10
     height = 10
     start_capital = 10
+    lucky_events = 5
+    unlucky_events = 5
+    simulation_steps = 80
 
     # create list of individuals
     individuals = create_individuals(num_individuals, start_capital, width, height)
     lucky_events, unlucky_events = create_events(5, 5, width, height)
 
     pprint(individuals)
-    simulation_steps = 80
 
     # expected value
     # how to calculate
