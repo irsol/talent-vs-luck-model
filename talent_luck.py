@@ -14,20 +14,14 @@ def create_individuals(num, start_capital, width, height):
     return individuals
 
 
-def create_events(num_lucky_events, num_unlucky_events, width, height):
-    lucky_events = []
-    for j in range(num_lucky_events):
+def create_events(num_events, width, height):
+    events = []
+    for j in range(num_events):
         x = random.randint(0, width)
         y = random.randint(0, height)
-        lucky_events.append([x, y])
+        events.append([x, y])
 
-    unlucky_events = []
-    for n in range(num_unlucky_events):
-        x = random.randint(0, width)
-        y = random.randint(0, height)
-        unlucky_events.append([x, y])
-
-    return lucky_events, unlucky_events
+    return events
 
 
 def move_events(events):
@@ -55,13 +49,15 @@ if __name__ == "__main__":
     width = 10
     height = 10
     start_capital = 10
-    lucky_events = 5
-    unlucky_events = 5
+    num_lucky_events = 5
+    num_unlucky_events = 7
     simulation_steps = 80
 
     # create list of individuals
     individuals = create_individuals(num_individuals, start_capital, width, height)
-    lucky_events, unlucky_events = create_events(5, 5, width, height)
+
+    lucky_events = create_events(num_lucky_events, width, height)
+    unlucky_events = create_events(num_unlucky_events, width, height)
 
     pprint(individuals)
 
@@ -82,7 +78,5 @@ if __name__ == "__main__":
     pprint(individuals)
 
 
-
-# create table of the events
 # define what is it lucky and unlucky event
-# uniform distribution
+# 1. check the boundries
