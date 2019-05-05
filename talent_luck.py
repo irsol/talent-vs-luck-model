@@ -30,7 +30,6 @@ def create_events(num_lucky_events, num_unlucky_events, width, height):
     return lucky_events, unlucky_events
 
 
-# TO DO: move events inside the grid
 def move_events(events):
     for event in events:
         # 4 - up, 5 - down, 6 - left, 7 - right
@@ -61,8 +60,10 @@ individuals = create_individuals(num_individuals, start_capital, width, height)
 lucky_events, unlucky_events = create_events(5, 5, width, height)
 
 pprint(individuals)
-simulation_steps = 50
+simulation_steps = 80
 
+# expected value
+# how to calculate
 for t in range(simulation_steps):
     # print(f"Step: {step}")
     lucky_events = move_events(lucky_events)
@@ -77,3 +78,7 @@ for t in range(simulation_steps):
 
 
 pprint(individuals)
+
+# create table of the events
+# define what is it lucky and unlucky event
+# uniform distribution
