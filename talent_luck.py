@@ -26,18 +26,17 @@ def create_events(num_events, width, height):
 
 def move_events(events):
     for event in events:
-        # 4 - up, 5 - down, 6 - left, 7 - right
-        direction = random.choice([4, 5, 6, 7])
-        if direction == 4:
+        direction = random.choice(["up", "down", "left", "right"])
+        if direction == "up":
             event[1] += 1
 
-        elif direction == 5:
+        elif direction == "down":
             event[1] -= 1
 
-        elif direction == 6:
+        elif direction == "left":
             event[0] -= 1
 
-        elif direction == 7:
+        elif direction == "right":
             event[0] += 1
 
     return events
