@@ -79,6 +79,8 @@ for t in range(simulation_steps):
 
 pprint(individuals)
 
+
+
 # create table of the events
 # define what is it lucky and unlucky event
 # uniform distribution
