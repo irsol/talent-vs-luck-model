@@ -3,6 +3,16 @@ import random
 
 
 def create_individuals(num, start_capital, width, height):
+    """ Creates a list of individuals randomly located on a grid.
+
+    :param num: number of individuals to create
+    :param start_capital: initial amount of capital for each individual
+    :param width:  width of the grid where individuals will be located
+    :param height: height of the grid where individuals will be located
+    :return: list of individuals
+
+    """
+
     individuals = []
     for n in range(num):
         # randomly put individuals on the grid
@@ -11,10 +21,19 @@ def create_individuals(num, start_capital, width, height):
 
         individual = {"position": [x, y], "capital": start_capital, "talent": random.random()}
         individuals.append(individual)
+
     return individuals
 
 
 def create_events(num_events, width, height):
+    """ Creates a number of events.
+
+    :param num_events:
+    :param width: width where events randomly allocated
+    :param height: height where events randomly allocated
+    :return: a list of events.
+
+    """
     events = []
     for j in range(num_events):
         x = random.randint(0, width)
@@ -25,6 +44,14 @@ def create_events(num_events, width, height):
 
 
 def move_events(events, width, height):
+    """ Move events randomly in four directions.
+
+    :param events: 
+    :param width: width where events randomly walk.
+    :param height: height where events randomly walk.
+    :return:
+
+    """
 
     for event in events:
         x, y = event
@@ -81,6 +108,3 @@ if __name__ == "__main__":
 
     pprint(individuals)
 
-
-# define what is it lucky and unlucky event
-# 1. check the boundaries
