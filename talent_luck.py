@@ -44,12 +44,13 @@ def create_events(num_events, width, height):
 
 
 def move_events(events, width, height):
-    """ Move events randomly in four directions.
+    """ Move every event from events randomly in one of four directions (up, down, left, right).
+        Function changes positions of events inplace
 
-    :param events: 
-    :param width: width where events randomly walk.
-    :param height: height where events randomly walk.
-    :return:
+    :param events: a list of events 
+    :param width: width of the grid
+    :param height: height of the grid
+    :return: events
 
     """
 
