@@ -1,5 +1,6 @@
 from pprint import pprint
 import random
+import csv 
 
 
 def create_individuals(num, start_capital, width, height):
@@ -76,15 +77,31 @@ def move_events(events, width, height):
     return events
 
 
+def store_results(individuals):
+    """ Store results of a simulation in csv file
+    
+    """
+    rows = []
+    
+    for individual in individuals:
+        row = individual["capital"], individual["talent"]
+        # row = "{},{}".format(individual["capital"], individual["talent"])
+        rows.append(row)
+
+    with open('results.csv', 'w') as f:
+        writer = csv.writer(f)
+        writer.writerows(rows)
+
+
 if __name__ == "__main__":
 
-    num_individuals = 5  # number of individuals
-    width = 10
-    height = 10
+    num_individuals = 5
+    width = 100
+    height = 100
     start_capital = 10
-    num_lucky_events = 5
-    num_unlucky_events = 7
-    simulation_steps = 80
+    num_lucky_events = 25
+    num_unlucky_events = 25
+    simulation_steps = 180
 
     # Create a list of individuals
     individuals = create_individuals(num_individuals, start_capital, width, height)
@@ -93,7 +110,7 @@ if __name__ == "__main__":
     lucky_events = create_events(num_lucky_events, width, height)
     unlucky_events = create_events(num_unlucky_events, width, height)
 
-    pprint(individuals)
+    # pprint(individuals)
 
     for t in range(simulation_steps):
         # print(f"Step: {step}")
@@ -109,3 +126,5 @@ if __name__ == "__main__":
 
     pprint(individuals)
 
+
+    store_results(individuals)
