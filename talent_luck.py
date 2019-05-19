@@ -26,12 +26,12 @@ def create_individuals(num, start_capital, width, height):
 
 
 def create_events(num_events, width, height):
-    """ Creates a number of events.
+    """ Creates a list of events
 
-    :param num_events:
-    :param width: width where events randomly allocated
-    :param height: height where events randomly allocated
-    :return: a list of events.
+    :param num_events: the number of events to create
+    :param width: width where events will be randomly located
+    :param height: height where events will be randomly located
+    :return: a list of events
 
     """
     events = []
